@@ -140,8 +140,6 @@ function applyFilters() {
 }
 ```
 
-### In p5.js, filters are used to apply various visual effects to images. Here's the filter used in the code:
-
 -GRAY: Converts the image to grayscale, removing all color information.
 
 -THRESHOLD: Converts the image to black and white based on a threshold value. Pixels above the threshold become white, and those below become black.
@@ -158,3 +156,7 @@ function applyFilters() {
 
 These filters can be applied to images to create interesting visual effects and transformations.
 
+
+## Future Development
+- Add more interactive elements, such as sliders or buttons
+- Introduce animations to the images, such as moving, rotating, or scaling them over time
