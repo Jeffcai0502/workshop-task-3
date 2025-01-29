@@ -143,11 +143,18 @@ function applyFilters() {
 ### In p5.js, filters are used to apply various visual effects to images. Here's the filter used in the code:
 
 -GRAY: Converts the image to grayscale, removing all color information.
+
 -THRESHOLD: Converts the image to black and white based on a threshold value. Pixels above the threshold become white, and those below become black.
+
 -INVERT: Inverts the colors of the image, turning light areas dark and dark areas light.
+
 -POSTERIZE: Reduces the number of colors in the image, creating a poster-like effect. The int(random(2, 5)) part specifies the number of color levels.
+
 -BLUR: Applies a blur effect to the image, making it look softer. The random(1, 3) part specifies the intensity of the blur.
+
 -ERODE: Erodes the light areas of the image, making them smaller.
+
 -DILATE: Dilates the light areas of the image, making them larger.
+
 These filters can be applied to images to create interesting visual effects and transformations.
 
