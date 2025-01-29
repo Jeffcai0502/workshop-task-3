@@ -1,6 +1,6 @@
 # workshop-task-3
 FA205_Workshop_3
-URL to the webpage for this project: [link]()
+URL to the webpage for this project: [link](https://jeffcai0502.github.io/workshop-task-3/)
 
 ## Task
 - Collect a series of images. Make a p5.js sketch that generates a new collage each time the sketch is run.
@@ -46,5 +46,108 @@ function draw () {
 
 <img width="1263" alt="截屏2025-01-29 上午9 27 33" src="https://github.com/user-attachments/assets/40380a11-25c0-47b2-800e-9d0211e684ef" />
 
-  
+### Pratice project
+This code will generate a new collage each time you click the canvas, and it will apply random filters to the images over time. 
+``` ruby
+let imgs = [];
+let showText = true;
+let currentImages = [];
+
+function preload() {
+  imgs.push(loadImage('core.jpeg'));
+  imgs.push(loadImage('core1.jpeg'));
+  imgs.push(loadImage('core2.jpeg'));
+  imgs.push(loadImage('core3.jpeg'));
+}
+
+function setup() {
+  createCanvas(800, 800);
+  frameRate(2);
+}
+
+function draw() {
+  if (showText) {
+    background(220);
+    textFont("Courier New");
+    textSize(30);
+    fill(0);
+    textAlign(CENTER);
+    text("Click to Generate Collage", width / 2, height / 2);
+  } else {
+    background(220);
+    for (let img of currentImages) {
+      image(img.image, img.x, img.y, img.width, img.height);
+    }
+    applyFilters();
+  }
+}
+
+function mousePressed() {
+  showText = false;
+  currentImages = [];
+  let r1 = random(imgs);
+  let r2 = random(imgs);
+  while (r2 === r1) {
+    r2 = random(imgs);
+  }
+  currentImages.push(createRandomImage(r1));
+  currentImages.push(createRandomImage(r2));
+}
+
+function createRandomImage(img) {
+  let maxSize = random(200, 500);
+  let aspectRatio = img.width / img.height;
+  let width, height;
+  if (aspectRatio > 1) {
+    width = maxSize;
+    height = maxSize / aspectRatio;
+  } else {
+    height = maxSize;
+    width = maxSize * aspectRatio;
+  }
+  let x = random(0, width);
+  let y = random(0, height);
+  return { image: img, x, y, width, height };
+}
+
+function applyFilters() {
+  for (let img of currentImages) {
+    let filterType = int(random(6));
+    switch (filterType) {
+      case 0:
+        filter(GRAY);
+        break;
+      case 1:
+        filter(THRESHOLD);
+        break;
+      case 2:
+        filter(INVERT);
+        break;
+      case 3:
+        filter(POSTERIZE, int(random(2, 5)));
+        break;
+      case 4:
+        filter(BLUR, random(1, 3));
+        break;
+      case 5:
+        filter(ERODE);
+        break;
+      case 6:
+        filter(DILATE);
+        break;
+    }
+  }
+}
+```
+
+### In p5.js, filters are used to apply various visual effects to images. Here's the filter used in the code:
+
+-GRAY: Converts the image to grayscale, removing all color information.
+-THRESHOLD: Converts the image to black and white based on a threshold value. Pixels above the threshold become white, and those below become black.
+-INVERT: Inverts the colors of the image, turning light areas dark and dark areas light.
+-POSTERIZE: Reduces the number of colors in the image, creating a poster-like effect. The int(random(2, 5)) part specifies the number of color levels.
+-BLUR: Applies a blur effect to the image, making it look softer. The random(1, 3) part specifies the intensity of the blur.
+-ERODE: Erodes the light areas of the image, making them smaller.
+-DILATE: Dilates the light areas of the image, making them larger.
+These filters can be applied to images to create interesting visual effects and transformations.
 
