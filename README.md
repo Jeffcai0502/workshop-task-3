@@ -139,6 +139,8 @@ function applyFilters() {
   }
 }
 ```
+<img width="400" alt="截屏2025-01-29 上午9 57 44" src="https://github.com/user-attachments/assets/9e35d331-bd9f-4523-9906-0f13dfee813b" />
+<img width="400" alt="截屏2025-01-29 上午9 57 55" src="https://github.com/user-attachments/assets/1ba1c731-3fd1-411d-8010-30c55f783fee" />
 
 -GRAY: Converts the image to grayscale, removing all color information.
 
